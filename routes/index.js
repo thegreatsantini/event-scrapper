@@ -10,4 +10,8 @@ indexRoute.get("/", function (req, res) {
     res.render('index');
 });
 
+indexRoute.get('/event', function(req, res){
+    res.render('eventView')
+})
+
 module.exports = indexRoute;
