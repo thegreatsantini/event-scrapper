@@ -39,6 +39,10 @@ app.use('/', indexRoute)
 //     console.log(`App is locked and loaded in port ${app.get('port')}`)
 // })
 
-app.listen(process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, ()=>{
+    console.log(`app is locked and loaded at port: ${PORT}`)
+});
 
 module.exports = app;
