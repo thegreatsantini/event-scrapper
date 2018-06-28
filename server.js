@@ -25,11 +25,7 @@ app.use(expressLayouts);
 app.use('/', indexRoute)
 
 // just a convenience, but makes life easier...
-app.use(function (req, res, next) {
-    res.locals.currentUser = req.user;
-    res.locals.alerts = req.flash();
-    next();
-});
+
 
 // routes
 app.use('/', indexRoute)
@@ -44,3 +40,5 @@ app.use('/', indexRoute)
 // })
 
 app.listen(process.env.PORT || 3000);
+
+module.exports = app;
