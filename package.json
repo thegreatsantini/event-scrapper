@@ -12,6 +12,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
+    "cloudscraper": "^1.5.0",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
@@ -19,6 +21,7 @@
     "mongoose": "^5.1.7",
     "morgan": "^1.9.0",
     "npm": "^6.1.0",
+    "puppeteer": "^1.5.0",
     "request": "^2.87.0"
   },
   "devDependencies": {
