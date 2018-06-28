@@ -14,10 +14,10 @@ indexRoute.get("/", function (req, res) {
     res.render('index');
 });
 
-indexRoute.get('/stanford', function (req, res) {
+indexRoute.get('/api/stanford', function (req, res) {
     request('http://events.stanford.edu/', function (error, response, html) {
         let data = []
-        if (!error && response.statusCode == 200) {
+        if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
             $('.postcard-text').each(function (i, element) {
                 const a = $(this)
