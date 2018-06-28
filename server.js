@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const path = require('path'); // had to require here
 const indexRoute = require('./routes/index');
-
+const cors = require('cors')
 // initialize app
 const app = express();
 
@@ -21,8 +21,8 @@ app.use(morgan('tiny'))
 app.use('/static', express.static(path.join(__dirname + 'public')))
 app.use(bodyParser.urlencoded({ extended: false }))// what doe sthe true and false do?
 app.use(expressLayouts);
+app.use(cors());
 
-app.use('/', indexRoute)
 
 // just a convenience, but makes life easier...
 
