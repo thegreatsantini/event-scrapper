@@ -2,13 +2,11 @@ const express = require("express");
 const indexRoute = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-const path = require('path'); // had to require here
 
 
 indexRoute.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.status(200).send('landing page');
 });
-
 
 indexRoute.get('/api/v1/stanford', function (req, res) {
     request('http://events.stanford.edu/', function (error, response, html) {
