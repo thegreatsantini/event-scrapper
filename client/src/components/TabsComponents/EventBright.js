@@ -11,7 +11,7 @@ class EventBright extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:8080/api/eventbright/')
+        axios.get('http://localhost:8080/api/v1/eventbright/')
             .then((response) => {
                 response.data.forEach(item => {
                     this.setState({ events: [...this.state.events, item] })

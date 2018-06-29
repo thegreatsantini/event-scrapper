@@ -11,7 +11,7 @@ class Standford extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:8080/api/stanford/')
+        axios.get('http://localhost:8080/api/v1/stanford/')
             .then( (response)=> {
                 response.data.forEach( item => {
                     this.setState({ events: [...this.state.events, item] })
