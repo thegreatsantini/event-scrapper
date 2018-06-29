@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import EventBright from './resultsContainers/EventBright';
-import MeetUp from './resultsContainers/MeetUp';
-import Stanford from './resultsContainers/Stanford';
+import EventBright from './TabsComponents/EventBright';
+import MeetUp from './TabsComponents/MeetUp';
+import Stanford from './TabsComponents/Stanford';
 import Home from './Home'
 
 class NavLinks extends Component {

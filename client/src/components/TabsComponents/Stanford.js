@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import StandfordEvents from './resultsContainers/StanfordEvent'
 
 class Standford extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Standford extends Component {
     render() {
         return (
             <div>
-                Here is Standford info
+                <StandfordEvents events={this.state.events} />
             </div>
         );
     }
