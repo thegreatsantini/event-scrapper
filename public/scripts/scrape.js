@@ -27,6 +27,8 @@ request('https://www.meetup.com/#', function (error, response, html) {
     if (!error && response.statusCode === 200) {
         const $ = cheerio.load(html);
         let parsedResults = [];
+        const card = $('.card').html()
+        console.log(card)
         $('.searchResults').each(function(){
             const a = $(this)
             console.log(a.text())
