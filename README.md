@@ -1,14 +1,23 @@
 # Event Scrapper
 
-### To run locally 
+### Run Server
 
 1) clone repo
 ```git clone https://github.com/thegreatsantini/event-scrapper.git```
 
 2) install dependencies
-```npm i``
+```npm i````
 
 3) run server
-```npm start```
+```nodemon```
 
-4) type localhost:3000 in address bar
+### Run Front end
+
+1) move to client directory
+```cd client```
+
+2) install dependencies
+```npm i```
+
+3) start front end
+```npm start```
