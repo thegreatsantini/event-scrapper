@@ -1,12 +1,12 @@
-var expect = require('chai').expect;
-var request = require('supertest');
-var app = require('../server');
+const expect = require('chai').expect;
+const assert = require('chai').assert;
+const request = require('supertest');
+const app = require('../server');
 
 
 describe('GET /', function () {
     it('should return a 200 response', function (done) {
-        request(app).get('/')
-            .expect(200, done);
+        request(app).get('/').expect(200, done);
     });
 });
 
@@ -14,11 +14,17 @@ describe('GET /stanford', function () {
     it('should return a 200 respone', function (done) {
         request(app).get('/api/stanford').expect(200, done)
     })
-    it('should return an array with data', function (done) {
+    it('shoudl return an array', function(done){
         request(app).get('/api/stanford').end(function(err, res){
-            // expect(res.body).to.be.an('array');
-            // console.log(res.body);
+            expect(res.body).to.be.an('array');
+            done()
+        })
+    })
+
+    it('should return an array with data', function (done) {
+        request(app).get('/api/stanford').end(function (err, res) {
             expect(res.body).to.not.be.empty
+            done()
         })
     })
 })

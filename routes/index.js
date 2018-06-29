@@ -1,20 +1,14 @@
 const express = require("express");
 const indexRoute = express.Router();
-const bodyParser = require('body-parser');
 const request = require('request');
 const cheerio = require('cheerio');
 
 
-
-// user model
-// const db = require('../models/user');
-// const SavedRecipe = require('../models/savedRecipes')
-
 indexRoute.get("/", function (req, res) {
-    res.render('index');
+    res.status(200).send('landing page');
 });
 
-indexRoute.get('/api/stanford', function (req, res) {
+indexRoute.get('/api/v1/stanford', function (req, res) {
     request('http://events.stanford.edu/', function (error, response, html) {
         let data = []
         if (!error && response.statusCode === 200) {
@@ -32,23 +26,20 @@ indexRoute.get('/api/stanford', function (req, res) {
     });
 })
 
-indexRoute.get('/api/eventbright', function(req, res) {
+indexRoute.get('/api/v1/eventbright', function (req, res) {
     let data = [];
     request('https://www.eventbrite.com/d/wa--seattle/events--this-weekend/?place_id=101730401&internal_ref=login', function (error, response, html) {
-    if ( response.statusCode === 403 ) {
-        res.status(403).send('403 error')
-    }
+        if (response.statusCode === 403) {
+            res.status(403).send('403 error')
+        }
 
-    else if (!error && response.statusCode === 200) {
-        const $ = cheerio.load(html);
-        let parsedResults = [];
-        console.log('im here')
-        const thing = $('.eds-media-card-content__content__principal');
-        console.log(thing)
-        // $('.eds-media-card-content__content__principal').each(function (i, element) {
-        //     var a = $(this);
-        //     console.log(a.text());
-        // });
+        else if (!error && response.statusCode === 200) {
+            const $ = cheerio.load(html);
+            let parsedResults = [];
+            // $('.eds-media-card-content__content__principal').each(function (i, element) {
+            //     var a = $(this);
+            //     console.log(a.text());
+            // });
         }
     })
 })
