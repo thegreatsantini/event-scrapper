@@ -4,29 +4,31 @@ const puppeteer = require('puppeteer');
 
 
 
-// request('https://www.eventbrite.com/d/wa--seattle/events--this-weekend/?place_id=101730401&internal_ref=login', function (error, response, html) {
-//     console.log(response.statusCode)
-//     if (!error && response.statusCode === 200) {
-//         const $ = cheerio.load(html);
-//         let parsedResults = [];
-//         console.log('im here')
-//         const thing = $('.eds-media-card-content__content__principal');
-//         console.log(thing)
-//         // $('.eds-media-card-content__content__principal').each(function (i, element) {
-//         //     var a = $(this);
-//         //     console.log(a.text());
-//         // });
-//     }
-//     if (error) {
-//         console.log('ouch')
-//     }
-// })
+request('https://www.eventbrite.com/d/wa--seattle/events--this-weekend/?place_id=101730401&internal_ref=login', function (error, response, html) {
+    if ( response.statusCode === 403 ) {
+        return ('Need Captcha to view this site.')
+    }
+    console.log(response.statusCode)
+    if (!error && response.statusCode === 200) {
+        const $ = cheerio.load(html);
+        let parsedResults = [];
+        console.log('im here')
+        const thing = $('.eds-media-card-content__content__principal');
+        console.log(thing)
+        // $('.eds-media-card-content__content__principal').each(function (i, element) {
+        //     var a = $(this);
+        //     console.log(a.text());
+        // });
+    }
+})
 
 request('https://www.meetup.com/#', function (error, response, html) {
     console.log(response.statusCode)
     if (!error && response.statusCode === 200) {
         const $ = cheerio.load(html);
         let parsedResults = [];
+        const card = $('.card').html()
+        console.log(card)
         $('.searchResults').each(function(){
             const a = $(this)
             console.log(a.text())
