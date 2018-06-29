@@ -1,7 +1,6 @@
 require('dotenv').config(); // loads the .env
 const express = require('express');
 const morgan = require('morgan');
-const path = require('path'); // had to require here
 const indexRoute = require('./routes/index');
 const cors = require('cors')
 // initialize app
@@ -20,9 +19,7 @@ app.use(cors());
 
 // routes
 app.use('/', indexRoute)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});
+
 
 const PORT = process.env.PORT || 7777
 
