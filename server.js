@@ -21,7 +21,7 @@ app.use(cors());
 app.use('/', indexRoute)
 
 
-const PORT = process.env.PORT || 7777
+const PORT = process.env.PORT || 8080
 
 app.listen(PORT, () => {
     console.log(`app is locked and loaded at port: ${PORT}`)
