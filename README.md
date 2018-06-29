@@ -13,7 +13,7 @@
 
 ### Run Front end
 
-1) move to client directory
+1) open a new tab move to client directory
 ```cd client```
 
 2) install dependencies
