@@ -2,7 +2,7 @@ const express = require("express");
 const indexRoute = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-
+const phantom = require('phantom')
 
 indexRoute.get("/", function (req, res) {
     res.status(200).send('landing page');
@@ -32,15 +32,25 @@ indexRoute.get('/api/v1/eventbright', function (req, res) {
         if (response.statusCode === 403) {
             res.status(403).send('403 error')
         }
+    })
+})
 
-        else if (!error && response.statusCode === 200) {
-            const $ = cheerio.load(html);
-            let parsedResults = [];
-            // $('.eds-media-card-content__content__principal').each(function (i, element) {
-            //     var a = $(this);
-            //     console.log(a.text());
-            // });
-        }
+indexRoute.get('/api/v1/meetup', function(req, res){
+    let pageData = []
+    let getData = (async function () {
+        const instance = await phantom.create();
+        const page = await instance.createPage();
+    
+        const status = await page.open('https://www.meetup.com/');
+        const content = await page.property('content');
+        await instance.exit();
+        return content;
+    })().then( (data) => {
+        let slicedData = data.slice(0,15)
+        pageData.push(slicedData)
+        return data
+    }).then(() => {
+        res.status(200).send(pageData)
     })
 })
 
