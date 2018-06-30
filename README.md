@@ -8,6 +8,20 @@
 2) install dependencies
 ```npm i```
 
+3) run server
+```nodemon```
+
+### Run Front end
+
+1) open a new tab move to client directory
+```cd client```
+
+2) install dependencies
+```npm i```
+
+3) start front end
+```npm start```
+
 
 How far did you get?
 I was able to implement most of the required functionality. My single-page web app successfully scrapes events.stanford.com, returning event data that I parse and display on screen. I designed and implemented tests that successfully test for: (1) a 200 status code, (2) receiving data, (3) receiving data as an array, and (4) if the data came in as an array of objects. I faced challenges with scraping Event Bright because I received a 403 forbidden code, meaning the site requires a captcha. While I was able to receive HTML from meetup.com, I wasn’t able to successfully traverse the DOM to grab event data in the amount of time that I had because of the deeply nested DOM and figuring out how to use data received from phantom.js as it came in i18n. I also did not implement infinite scrolling, displaying all returned event data on the screen instead.
@@ -32,7 +46,8 @@ What are common first steps to scaling your server to handle massive request rat
 The first step would be to have many cloned instances to share the workload. Next, decompose the application based on service or functionality. Another strategy would be to enable load balancing using the cluster module.
 
 #### simple cluster module implementation
-```// server.js
+```
+// server.js
 const http = require('http');
 const pid = process.pid;
 
@@ -41,9 +56,11 @@ http.createServer((req, res) => {
   res.end(`Handled by process ${pid}`);
 }).listen(8080, () => {
   console.log(`Started process ${pid}`);
-});```
+});
+```
 ---
-```// server.js
+```
+// server.js
 const http = require('http');
 const pid = process.pid;
 
@@ -52,26 +69,11 @@ http.createServer((req, res) => {
   res.end(`Handled by process ${pid}`);
 }).listen(8080, () => {
   console.log(`Started process ${pid}`);
-});```
+});
+```
 
 * source: https://medium.freecodecamp.org/scaling-node-js-applications-8492bd8afadc
 
 
 What are the performance bottlenecks with your current server? How would you address them?
-My current performance bottlenecks are the requests being made to scrape external web sites. CPU performance testing in Node can be done using the os package with the ``os.spus()`` function
-
-
-3) run server
-```nodemon```
-
-### Run Front end
-
-1) open a new tab move to client directory
-```cd client```
-
-2) install dependencies
-```npm i```
-
-3) start front end
-```npm start```
-
+My current performance bottlenecks are the requests being made to scrape external web sites. CPU performance testing in Node can be done using the os package with the ``os.spus()`` function.
