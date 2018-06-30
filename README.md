@@ -19,7 +19,7 @@ What is the next thing you would do if you had more time?
 With more time I would extend web scraping to the remaining two sites, which require(s) more effort for DOM traversal such as using a headless browser to bypass the 403 “Forbidden” status code. I would also deploy the app for public use.
 
 Talk about performance concerns on the frontend?
-My main concern about the frontend performance issues is that every time a user navigates to a another tab, there is a new axios call which forces the backend to make another cheerio request to scrape that specific web page. One way to mitigate that is to cache the data on the first request and implement a check so that I can load the cached data rather than making a redundant request.
+My main concern about frontend performance is that every time a user navigates to another tab, there is a new axios call which forces the backend to make another cheerio request to scrape that specific web page. One way to mitigate that is to cache the data on the first request (e.g., in Local Storage for a set period of time) and implement a check so that I can load the cached data rather than making a redundant request.
 
 
 How do you handle the list as you continue scrolling and it gets super long?
